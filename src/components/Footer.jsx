@@ -1,110 +1,97 @@
 import { Link } from "react-router-dom";
-import {
-  GitlabIcon as GitHub,
-  Instagram,
-  Linkedin,
-  Twitter,
-} from "lucide-react";
 import { motion } from "framer-motion";
+import TwitterIcon from "../assets/icons/twitter.png";
+import InstagramIcon from "../assets/icons/instagram.png";
+import LinkedInIcon from "../assets/icons/linkedin.png";
 
 export default function Footer() {
-  const socialLinks = [
-    { icon: GitHub, href: "#", label: "GitHub" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-  ];
-
-  const footerSections = [
-    {
-      title: "Quick Links",
-      links: [
-        { name: "Home", href: "/" },
-        { name: "Events", href: "/events" },
-        { name: "Blog", href: "/blog" },
-        { name: "Team", href: "/team" },
-      ],
-    },
-    {
-      title: "Resources",
-      links: [
-        { name: "IEEE.org", href: "https://www.ieee.org" },
-        { name: "IEEE Xplore", href: "https://ieeexplore.ieee.org" },
-        { name: "IEEE Standards", href: "#" },
-        { name: "IEEE Spectrum", href: "#" },
-      ],
-    },
-    {
-      title: "Contact",
-      links: [
-        { name: "Contact Us", href: "/contact" },
-        { name: "Join IEEE", href: "#" },
-        { name: "Newsletter", href: "#" },
-        { name: "FAQs", href: "#" },
-      ],
-    },
-  ];
+  const textStyle = "text-2xl text-white pb-8 pt-2";
 
   return (
-    <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          <div className="lg:col-span-2">
-            <Link to="/" className="inline-block">
-              <motion.span
-                whileHover={{ scale: 1.05 }}
-                className="text-2xl font-bold text-ieee-blue dark:text-white"
-              >
-                IEEE SB MUJ
-              </motion.span>
-            </Link>
-            <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-md">
-              Empowering innovation and fostering technological advancement
-              through professional excellence and collaborative learning.
-            </p>
-            <div className="mt-6 flex space-x-4">
-              {socialLinks.map((social) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="text-gray-400 hover:text-ieee-blue dark:hover:text-white transition-colors duration-200"
-                  aria-label={social.label}
-                >
-                  <social.icon className="h-6 w-6" />
-                </motion.a>
-              ))}
-            </div>
+    <footer className="flex flex-col gap-4 bg-[#151515] fontAlSC m-4 p-2 border-2 border-white rounded-xl">
+      <div className="flex justify-around items-center">
+        <div className="flex flex-col justify-center items-center">
+          <h2 className={textStyle}>Socials</h2>
+          <div className="flex gap-4 *:*:h-8 bg-[#0f0f0f] p-4 rounded-e-lg">
+            <a href="#">
+              <img src={InstagramIcon} alt="IEEE Instagram" />
+            </a>
+            <a href="#">
+              <img src={LinkedInIcon} alt="IEEE LinkedIn" />
+            </a>
+            <a href="#">
+              <img src={TwitterIcon} alt="IEEE Twitter" />
+            </a>
           </div>
+        </div>
+        <div id="links" className="flex flex-col">
+          <h2 className={textStyle}>Quick Links</h2>
 
-          {footerSections.map((section) => (
-            <div key={section.title}>
-              <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">
-                {section.title}
-              </h3>
-              <ul className="mt-4 space-y-2">
-                {section.links.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      to={link.href}
-                      className="text-gray-600 dark:text-gray-400 hover:text-ieee-blue dark:hover:text-white transition-colors duration-200"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div>
+            <ul className="flex flex-col gap-1 text-md text-white underline">
+              <li>
+                <a href="#">Home</a>
+              </li>
+              <li>
+                <a href="#">Events</a>
+              </li>
+              <li>
+                <a href="#">Blog</a>
+              </li>
+              <li>
+                <a href="#">Team</a>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
-          <p className="text-center text-gray-400 dark:text-gray-600">
-            © {new Date().getFullYear()} IEEE Student Branch MUJ. All rights
-            reserved.
-          </p>
+        <div id="links" className="flex flex-col">
+          <h2 className={textStyle}>Resources</h2>
+
+          <div>
+            <ul className="flex flex-col gap-1 text-md text-white underline">
+              <li>
+                <a href="#">IEEE.org</a>
+              </li>
+              <li>
+                <a href="#">IEEE Xplore</a>
+              </li>
+              <li>
+                <a href="#">IEEE Standards</a>
+              </li>
+              <li>
+                <a href="#">IEEE Spectrum</a>
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <div id="links" className="flex flex-col">
+          <h2 className={textStyle}>Contact</h2>
+
+          <div>
+            <ul className="flex flex-col gap-1 text-md text-white underline">
+              <li>
+                <a href="#">Contact us</a>
+              </li>
+              <li>
+                <a href="#">Join IEEE</a>
+              </li>
+              <li>
+                <a href="#">Newsletter</a>
+              </li>
+              <li>
+                <a href="#">FAQs</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p className=" text-center mb-2 text-md text-white">
+          &copy; 2025 IEEE Student Branch MUJ. All rights reserved. 2025 IEEE
+          Student Branch MUJ. All rights reserved.
+        </p>
       </div>
     </footer>
   );
