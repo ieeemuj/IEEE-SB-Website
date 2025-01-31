@@ -1,82 +1,90 @@
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 const achievementsData = [
   {
-    id: 1,
+    id: "achievement1",
+    year: 2023,
+    society: "Society A",
     title: "Achievement 1",
-    description: "test achievement 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac ex nec justo vulputate sollicitudin.",
     image: "/public/achievement1.webp",
   },
   {
-    id: 2,
+    id: "achievement2",
+    year: 2023,
+    society: "Society B",
     title: "Achievement 2",
-    description: "test achievement 2",
+    description:
+      "Pellentesque vehicula urna at sapien fringilla, eget tincidunt nisi tincidunt. Nulla facilisi.",
     image: "/public/achievement2.webp",
   },
   {
-    id: 3,
+    id: "achievement3",
+    year: 2022,
+    society: "Society A",
     title: "Achievement 3",
-    description: "test achievement 3",
+    description:
+      "Curabitur nec velit eu risus porttitor tincidunt. Vestibulum luctus erat ut mi varius aliquet.",
     image: "/public/achievement3.webp",
-  },
-  {
-    id: 4,
-    title: "Achievement 4",
-    description: "test achievement 4",
-    image: "/public/achievement4.webp",
-  },
-  {
-    id: 5,
-    title: "Achievement 5",
-    description: "test achievement 5",
-    image: "/public/achievement5.webp",
-  },
-  {
-    id: 6,
-    title: "Achievement 6",
-    description: "test achievement 6",
-    image: "test achievement 6",
   },
 ];
 
-const AchievementCard = ({ achievement }) => (
+const AchievementCard = ({ achievement, isReversed }) => (
   <motion.div
-    className="group relative bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden p-4"
+    className={`group flex flex-col sm:flex-row ${
+      isReversed ? "sm:flex-row-reverse" : ""
+    } items-center gap-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 p-6`}
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5 }}
-    whileHover={{ scale: 1.05 }}
   >
-    <div className="aspect-square overflow-hidden">
-      <img
+    <div className="flex-shrink-0 w-full sm:w-1/2">
+      <motion.img
         src={achievement.image}
         alt={achievement.title}
-        className="w-full h-full object-cover"
+        className="w-full h-auto object-cover rounded-lg cursor-pointer"
+        whileHover={{ scale: 1.05 }}
       />
     </div>
-    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center">
-      <p className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm">
-        {achievement.description}
-      </p>
+    <div className="flex-grow">
+      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+        {achievement.title}
+      </h3>
+      <p className="text-gray-600 dark:text-gray-400">{achievement.description}</p>
     </div>
-    <h3 className="text-center text-xl font-semibold text-gray-900 dark:text-white mt-2">
-      {achievement.title}
-    </h3>
   </motion.div>
 );
 
 AchievementCard.propTypes = {
   achievement: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
+    society: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
   }).isRequired,
+  isReversed: PropTypes.bool.isRequired,
 };
 
 function Achievements() {
+  const [year, setYear] = useState("2023");
+  const [society, setSociety] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredAchievements = achievementsData.filter((achievement) => {
+    return (
+      (year === "" || achievement.year.toString() === year) &&
+      (society === "" || achievement.society === society) &&
+      (searchTerm === "" ||
+        achievement.title.toLowerCase().includes(searchTerm.toLowerCase()))
+    );
+  });
+
   return (
     <section className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -88,9 +96,46 @@ function Achievements() {
             Explore our milestones and success stories
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {achievementsData.map((achievement) => (
-            <AchievementCard key={achievement.id} achievement={achievement} />
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <input
+            type="text"
+            placeholder="Search Achievements"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+          <select
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+            className="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          >
+            <option value="">Year</option>
+            {[...new Set(achievementsData.map((a) => a.year))].map((yr) => (
+              <option key={yr} value={yr}>
+                {yr}
+              </option>
+            ))}
+          </select>
+          <select
+            value={society}
+            onChange={(e) => setSociety(e.target.value)}
+            className="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          >
+            <option value="">Society</option>
+            {[...new Set(achievementsData.map((a) => a.society))].map((soc) => (
+              <option key={soc} value={soc}>
+                {soc}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="space-y-8">
+          {filteredAchievements.map((achievement, index) => (
+            <AchievementCard
+              key={achievement.id}
+              achievement={achievement}
+              isReversed={index % 2 !== 0} // Alternate layout
+            />
           ))}
         </div>
       </div>
