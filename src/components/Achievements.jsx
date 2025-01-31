@@ -9,7 +9,7 @@ const achievementsData = [
     society: "Society A",
     title: "Achievement 1",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac ex nec justo vulputate sollicitudin.",
+      "achievement test 1",
     image: "/public/achievement1.webp",
   },
   {
@@ -18,7 +18,7 @@ const achievementsData = [
     society: "Society B",
     title: "Achievement 2",
     description:
-      "Pellentesque vehicula urna at sapien fringilla, eget tincidunt nisi tincidunt. Nulla facilisi.",
+      "achievement 2",
     image: "/public/achievement2.webp",
   },
   {
@@ -27,7 +27,7 @@ const achievementsData = [
     society: "Society A",
     title: "Achievement 3",
     description:
-      "Curabitur nec velit eu risus porttitor tincidunt. Vestibulum luctus erat ut mi varius aliquet.",
+      "achievement 3",
     image: "/public/achievement3.webp",
   },
 ];
