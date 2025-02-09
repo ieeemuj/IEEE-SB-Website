@@ -109,17 +109,19 @@ export default function BentoGrid({ items }) {
           </motion.div>
         )}
       </AnimatePresence>
+      <div className="w-screen flex items-center justify-center">
 
-      <div className="flex-col md:grid md:grid-cols-4 md:grid-rows-5 gap-4 p-4 *:rounded-xl *:min-h-24 w-screen">
+
+      <div className="w-[90vw] flex-col md:grid md:grid-cols-4 md:grid-rows-5 gap-4 p-4 *:rounded-xl *:min-h-24 ">
         {items.map((item, index) =>
           index !== 7 ? (
             <motion.div
-              key={item.id}
-              className={`bento-item h-auto flex items-center justify-center text-white text-lg font-bold ${disp[index]}`}
-              style={{
-                backgroundImage: `url(${item.image})`,
-                backgroundSize: "cover",
-              }}
+            key={item.id}
+            className={`bento-item h-auto flex items-center justify-center text-white text-lg font-bold ${disp[index]}`}
+            style={{
+              backgroundImage: `url(${item.image})`,
+              backgroundSize: "cover",
+            }}
               animate={glowAnimation}
               transition={glowTransition}
               whileHover={{ scale: 0.98 }}
@@ -133,17 +135,17 @@ export default function BentoGrid({ items }) {
                   index !== 7 ? "bg-black/60" : ""
                 } backdrop-blur-sm transition-all duration-300 hover:bg-black/40 ${
                   index !== 7
-                    ? "dark:text-white text-white"
-                    : "dark:text-white text-ieee-blue"
+                  ? "dark:text-white text-white"
+                  : "dark:text-white text-ieee-blue"
                 } text-xl p-2 rounded-b-md`}
-              >
+                >
                 {item.label}
               </div>
             </motion.div>
           ) : (
             <div
-              key={item.id}
-              className={`bento-item h-auto flex items-center justify-center text-white text-lg font-bold ${disp[index]}`}
+            key={item.id}
+            className={`bento-item h-auto flex items-center justify-center text-white text-lg font-bold ${disp[index]}`}
             >
               <motion.div className="relative rounded-xl w-full h-full bottom-0 left-0 right-0 flex justify-center items-center bg-opacity-60 text-ieee-blue text-3xl p-2 rounded-b-md">
                 {item.label}
@@ -152,6 +154,7 @@ export default function BentoGrid({ items }) {
           )
         )}
       </div>
+</div>
     </>
   );
 }

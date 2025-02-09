@@ -134,9 +134,9 @@ AchievementCard.propTypes = {
 
 function Achievements() {
   return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-900 overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <div className="max-w-[900px] ml-[-280px] mx-auto">
+    <section className="py-16 bg-gray-50 dark:bg-gray-900 ">
+      <div className="">
+        <div className="">
           <BentoGrid items={achievementsData} />
         </div>
       </div>
