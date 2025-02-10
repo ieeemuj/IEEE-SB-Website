@@ -44,7 +44,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full bg-white/90 dark:bg-ieee-dark/90 backdrop-blur-sm z-50 transition-all duration-500 ease-in-out border-b border-gray-200 dark:border-gray-800 ${
+      className={`fixed w-screen bg-white/90 dark:bg-ieee-dark/90 backdrop-blur-sm z-50 transition-all duration-500 ease-in-out border-b border-gray-200 dark:border-gray-800 ${
         scrolling ? "h-14" : "h-20" // Navbar height change based on scroll
       }`}
     >

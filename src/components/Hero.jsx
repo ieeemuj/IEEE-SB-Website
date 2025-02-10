@@ -52,17 +52,17 @@ export default function Hero() {
   return (
     <ElectricBackground>
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-32 pb-20">
         <div
           ref={ref}
           className="relative z-10 gap-12 items-center w-screen flex-col "
         >
           <div className="space-y-8">
             <div className="space-y-4">
-              <h2 className=" mt-8 text-ieee-blue dark:text-blue-400 text-xl font-semibold font-display">
+              <h2 className=" sm:mt-8 text-ieee-blue dark:text-blue-400 text-md sm:text-xl font-semibold font-display">
                 IEEE Student Branch MUJ
               </h2>
-              <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white font-display">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 dark:text-white font-display">
                 Empowering
                 <br />
                 <span
@@ -77,14 +77,14 @@ export default function Hero() {
               </h1>
             </div>
 
-            <p className="text-xl text-gray-600 dark:text-gray-300">
+            <p className=" text-sm sm:text-xl text-gray-600 dark:text-gray-300">
               Join the world&apos;s largest technical professional organization
               and be part of the future of technology.
             </p>
 
             <div className="flex flex-wrap gap-4 w-screen justify-center">
               <motion.button
-                className="bg-ieee-blue text-white px-8 py-3 rounded-md hover:bg-blue-700 transition-colors duration-200 shadow-lg"
+                className="bg-ieee-blue text-white px-4 py-2 sm:px-8 sm:py-3 rounded-md hover:bg-blue-700 transition-colors duration-200 shadow-lg"
                 animate={glowAnimation}
                 transition={glowTransition}
                 onHoverStart={() => {}}
@@ -108,8 +108,8 @@ export default function Hero() {
               </motion.button>
             </div>
 
-            <div className="flex items-center gap-4 text-gray-600 dark:text-gray-400">
-              <div className="flex overflow-hidden">
+            <div className="flex items-center gap-4 text-gray-600 dark:text-gray-400 ">
+              <div className="flex overflow-hidden ">
                 {[
                   "krishna.avif",
                   "garima.avif",
@@ -128,7 +128,7 @@ export default function Hero() {
                   </div>
                 ))}
               </div>
-              <p>Join 1000+ members in our community</p>
+              <p className="text-sm sm:text-md p-4">Join 1000+ members in our community</p>
             </div>
           </div>
 

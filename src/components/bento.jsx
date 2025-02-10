@@ -112,12 +112,12 @@ export default function BentoGrid({ items }) {
       <div className="w-screen flex items-center justify-center">
 
 
-      <div className="w-[90vw] flex-col md:grid md:grid-cols-4 md:grid-rows-5 gap-4 p-4 *:rounded-xl *:min-h-24 ">
+      <div className="w-[90vw] flex-col md:grid md:grid-cols-4 md:grid-rows-5  sm:gap-4 p-4 *:rounded-xl sm:*:min-h-24  ">
         {items.map((item, index) =>
           index !== 7 ? (
             <motion.div
             key={item.id}
-            className={`bento-item h-auto flex items-center justify-center text-white text-lg font-bold ${disp[index]}`}
+            className={`my-4 bento-item h-40 md:h-auto flex items-center justify-center text-white text-lg font-bold ${disp[index]}`}
             style={{
               backgroundImage: `url(${item.image})`,
               backgroundSize: "cover",
@@ -145,7 +145,7 @@ export default function BentoGrid({ items }) {
           ) : (
             <div
             key={item.id}
-            className={`bento-item h-auto flex items-center justify-center text-white text-lg font-bold ${disp[index]}`}
+            className={`bento-item hidden sm:flex h-auto items-center justify-center text-white text-lg font-bold ${disp[index]}`}
             >
               <motion.div className="relative rounded-xl w-full h-full bottom-0 left-0 right-0 flex justify-center items-center bg-opacity-60 text-ieee-blue text-3xl p-2 rounded-b-md">
                 {item.label}

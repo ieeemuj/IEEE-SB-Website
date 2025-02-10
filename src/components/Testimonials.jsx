@@ -104,7 +104,7 @@ export default function Testimonials() {
             </motion.div>
           </AnimatePresence>
 
-          <div className="absolute top-1/2 -left-12 transform -translate-y-1/2">
+          <div className="absolute top-1/2 -left-2 sm:-left-12 transform -translate-y-1/2">
             <motion.button
               onClick={prevTestimonial}
               className="p-2 rounded-full bg-white dark:bg-gray-700 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
@@ -115,7 +115,7 @@ export default function Testimonials() {
             </motion.button>
           </div>
 
-          <div className="absolute top-1/2 -right-12 transform -translate-y-1/2">
+          <div className="absolute top-1/2 -right-2 sm:-right-12 transform -translate-y-1/2 ">
             <motion.button
               onClick={nextTestimonial}
               className="p-2 rounded-full bg-white dark:bg-gray-700 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
