@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   const footerSections = [
@@ -30,6 +31,19 @@ export default function Footer() {
     },
   ];
 
+  const socialMedia = [
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/ieeemuj/",
+      icon: <FaInstagram className="h-5 w-5" />,
+    },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/company/ieeesbmuj/",
+      icon: <FaLinkedin className="h-5 w-5" />,
+    },
+  ];
+
   return (
     <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -47,6 +61,20 @@ export default function Footer() {
               Empowering innovation and fostering technological advancement
               through professional excellence and collaborative learning.
             </p>
+            <div className="mt-4 flex space-x-4">
+              {socialMedia.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-500 hover:text-ieee-blue dark:hover:text-white transition-colors duration-200"
+                  aria-label={social.name}
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
           </div>
 
           {footerSections.map((section) => (
