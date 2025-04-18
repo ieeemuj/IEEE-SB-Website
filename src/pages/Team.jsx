@@ -120,7 +120,15 @@ const Team = () => {
     return acc;
   }, {});
 
-  // Sort members
+  const sortFacultyMembers = (members) => {
+    return members.sort((a, b) => {
+      // Put Branch Counselor first
+      if (a.position.toLowerCase().includes('branch counselor')) return -1;
+      if (b.position.toLowerCase().includes('branch counselor')) return 1;
+      return 0;
+    });
+  };
+
   const sortECMembers = (members) => {
     return members.sort((a, b) => {
       const aPosition = a.position.toLowerCase();
@@ -308,7 +316,7 @@ const Team = () => {
             <hr className="my-4 border-gray-300 dark:border-gray-700" />
             <FadeInStagger>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {groupedData["Advisory"].Faculty.map((person) => (
+                {sortFacultyMembers(groupedData["Advisory"].Faculty).map((person) => (
                   <FadeIn key={`${person.name}-${person.position}`}>
                     <div className="group relative overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300">
                       {renderImage(person.photo, person)}
