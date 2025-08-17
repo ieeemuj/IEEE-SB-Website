@@ -7,7 +7,9 @@ function Achievements() {
       <div className="max-w-[1400px] mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-ieee-blue dark:text-white">Our Achievements</h2>
+          <h2 className="text-4xl font-bold text-ieee-blue dark:text-white">
+            Our Achievements
+          </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 mt-3">
             Celebrating our milestones and accomplishments over the years.
           </p>
@@ -19,7 +21,7 @@ function Achievements() {
         </div>
       </div>
     </section>
-  );n
+  );
 }
 
 export default Achievements;

@@ -3,11 +3,9 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { client } from "../../sanity";
-import imageUrlBuilder from "@sanity/image-url";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-const builder = imageUrlBuilder(client);
-const urlFor = (source) => builder.image(source).url();
+// Sanity query already returns absolute poster URLs; no need to build again
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -24,8 +22,8 @@ const formatSociety = (society) => {
     "ieee-cs": "IEEE CS",
     "ieee-wie": "IEEE WIE",
     "ieee-cis": "IEEE CIS",
-    "ieeexacm": "IEEE X ACM",
-    "genesis": "Genesis",
+    ieeexacm: "IEEE X ACM",
+    genesis: "Genesis",
   };
   return societyMap[society?.toLowerCase()] || society;
 };
@@ -46,7 +44,7 @@ export default function SwipeCards() {
         data.map((event) => ({
           ...event,
           status: new Date(event.startDateTime) > today ? "upcoming" : "past",
-          poster: event.poster ? urlFor(event.poster) : "",
+          poster: event.poster || "",
           formattedDate: formatDate(event.startDateTime),
           formattedSociety: formatSociety(event.society),
         }))
@@ -93,7 +91,9 @@ const EventCardSection = ({ events }) => {
   const truncateText = (text, limit) => {
     if (!text) return "";
     const words = text.split(/\s+/);
-    return words.length <= limit ? text : words.slice(0, limit).join(" ") + "...";
+    return words.length <= limit
+      ? text
+      : words.slice(0, limit).join(" ") + "...";
   };
 
   const handlePrev = () => {
@@ -154,7 +154,9 @@ const EventCardSection = ({ events }) => {
                 ))}
             </div>
             <Link
-              to={`/events/${currentEvent.status === "upcoming" ? "pre" : "post"}/${currentEvent._id}`}
+              to={`/events/${
+                currentEvent.status === "upcoming" ? "pre" : "post"
+              }/${currentEvent._id}`}
               state={{ event: currentEvent }}
               className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
             >
