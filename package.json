@@ -22,7 +22,7 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
-    "axios": "^1.8.2",
+    "axios": "^1.13.5",
     "canvas-confetti": "^1.9.3",
     "clsx": "^2.1.1",
     "fortawesome": "^0.0.1-security",
