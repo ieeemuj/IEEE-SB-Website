@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import events from "../data/events";
 
 const StatCard = ({ targetNumber, label }) => {
   const [count, setCount] = useState(0);
@@ -35,7 +36,7 @@ const StatCard = ({ targetNumber, label }) => {
       className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-transform perspective-500"
     >
       <h3 className="text-3xl sm:text-4xl font-bold text-ieee-blue dark:text-blue-400 mb-2 font-display">
-        {count}+
+        {count}{label !== "Events" && "+"}
       </h3>
       <p className="text-gray-600 dark:text-gray-400">{label}</p>
     </motion.div>
@@ -48,6 +49,7 @@ StatCard.propTypes = {
 };
 
 export default function About() {
+  const totalEvents = events.length;
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true,
@@ -102,7 +104,7 @@ export default function About() {
           {/* Stats Section with Animated Numbers */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             <StatCard targetNumber="500" label="Members" />
-            <StatCard targetNumber="50" label="Events" />
+            <StatCard targetNumber={totalEvents.toString()} label="Events" />
             <StatCard targetNumber="4" label="Societies" />
             <StatCard targetNumber="10" label="Mentors" />
           </div>
