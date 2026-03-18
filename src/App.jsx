@@ -33,11 +33,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-
-      {/* Navbar stays fixed */}
       <Navbar />
-
-      {/* GLOBAL OFFSET FIX */}
       <main className="pt-16 md:pt-20 min-h-screen bg-white dark:bg-ieee-dark transition-colors duration-300">
         <Routes>
           <Route path="/" element={<Home />} />
