@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { client } from "../../sanity";
 
 const StatCard = ({ targetNumber, label }) => {
   const [count, setCount] = useState(0);
@@ -53,6 +54,20 @@ export default function About() {
     triggerOnce: true,
   });
 
+  const [eventCount, setEventCount] = useState(0);
+
+  useEffect(() => {
+    const fetchEventCount = async () => {
+      try {
+        const count = await client.fetch(`count(*[_type == "event"])`);
+        setEventCount(count);
+      } catch (error) {
+        console.error("Error fetching event count:", error);
+      }
+    };
+    fetchEventCount();
+  }, []);
+
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
@@ -102,7 +117,7 @@ export default function About() {
           {/* Stats Section with Animated Numbers */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             <StatCard targetNumber="500" label="Members" />
-            <StatCard targetNumber="50" label="Events" />
+            <StatCard targetNumber={eventCount.toString()} label="Events" />
             <StatCard targetNumber="4" label="Societies" />
             <StatCard targetNumber="10" label="Mentors" />
           </div>
