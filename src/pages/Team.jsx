@@ -259,7 +259,7 @@ const Team = () => {
                 className="absolute bg-white dark:bg-gray-800 shadow-xl rounded-md w-32 mt-2 z-10"
                 role="menu"
               >
-                {["2022", "2023", "2024", "2025"].map((yr) => (
+                {["2022", "2023", "2024", "2025","2026"].map((yr) => (
                   <motion.li
                     key={yr}
                     onClick={() => {
