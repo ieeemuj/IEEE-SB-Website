@@ -23,7 +23,7 @@ const socialMediaIcons = {
 
 const Team = () => {
   const [teamData, setTeamData] = useState([]);
-  const [year, setYear] = useState("2065");
+  const [year, setYear] = useState("2026");
   const [selectedTab, setSelectedTab] = useState("Advisory");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
