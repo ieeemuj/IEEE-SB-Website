@@ -124,18 +124,16 @@ const sortFacultyMembers = (members) => {
   const facultyOrder = [
     "Dr. Mahesh Jangid",
     "Dr Sunita Singhal",
-    "Dr.Shishir Singh Chauhan",
+    "Dr. Shishir Singh Chauhan",
     "Dr. Juhi",
     "Dr. Rishav Dubey",
     "Dr.Kumar Shashvat"
-    
   ];
 
   return [...members].sort((a, b) => {
     const aIndex = facultyOrder.indexOf(a.name);
     const bIndex = facultyOrder.indexOf(b.name);
 
-    // People not listed above go to the end
     if (aIndex === -1 && bIndex === -1) return 0;
     if (aIndex === -1) return 1;
     if (bIndex === -1) return -1;
