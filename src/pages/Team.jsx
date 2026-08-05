@@ -120,14 +120,29 @@ const Team = () => {
     return acc;
   }, {});
 
-  const sortFacultyMembers = (members) => {
-    return members.sort((a, b) => {
-      // Put Branch Counselor first
-      if (a.position.toLowerCase().includes('branch counselor')) return -1;
-      if (b.position.toLowerCase().includes('branch counselor')) return 1;
-      return 0;
-    });
-  };
+const sortFacultyMembers = (members) => {
+  const facultyOrder = [
+    "Dr. Mahesh Jangid",
+    "Dr Sunita Singhal",
+    "Dr.Shishir Singh Chauhan",
+    "Dr. Juhi",
+    "Dr. Rishav Dubey",
+    "Dr.Kumar Shashvat"
+    
+  ];
+
+  return [...members].sort((a, b) => {
+    const aIndex = facultyOrder.indexOf(a.name);
+    const bIndex = facultyOrder.indexOf(b.name);
+
+    // People not listed above go to the end
+    if (aIndex === -1 && bIndex === -1) return 0;
+    if (aIndex === -1) return 1;
+    if (bIndex === -1) return -1;
+
+    return aIndex - bIndex;
+  });
+};
 
   const sortECMembers = (members) => {
     return members.sort((a, b) => {
