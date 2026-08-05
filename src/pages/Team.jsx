@@ -122,8 +122,8 @@ const Team = () => {
 
 const sortFacultyMembers = (members) => {
   const facultyOrder = [
-    "Dr Sunita Singhal",
     "Dr. Mahesh Jangid",
+    "Dr Sunita Singhal",
     "Dr. Shishir Singh Chauhan",
     "Dr. Juhi",
     "Dr. Rishav Dubey",
