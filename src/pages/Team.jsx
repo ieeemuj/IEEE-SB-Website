@@ -127,7 +127,7 @@ const sortFacultyMembers = (members) => {
     "Dr. Shishir Singh Chauhan",
     "Dr. Juhi",
     "Dr. Rishav Dubey",
-    "Dr.Kumar Shashvat"
+    "Dr. Kumar Shashvat"
   ];
 
   return [...members].sort((a, b) => {
