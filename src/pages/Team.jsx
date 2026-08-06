@@ -143,19 +143,40 @@ const sortFacultyMembers = (members) => {
 };
 
   const sortECMembers = (members) => {
-    return members.sort((a, b) => {
-      const aPosition = a.position.toLowerCase();
-      const bPosition = b.position.toLowerCase();
+  const positionOrder = [
+    "chair",
+    "vicechair",
+    "gensec",
+    "md",
+    "treasurer",
+    "hrd",
+    "cmd",
+    "technical projects mentor",
+    "webmaster",
+  ];
 
-      const getPositionRank = (position) => {
-        if (position.includes('chairperson') && !position.includes('vice')) return 1;
-        if (position.includes('vice')) return 2;
-        return 3;
-      };
-
-      return getPositionRank(aPosition) - getPositionRank(bPosition);
-    });
+  const normalizePosition = (position) => {
+    return position
+      ?.toLowerCase()
+      .replace(/\s+/g, "")
+      .replace(/-/g, "");
   };
+
+  const getPositionRank = (position) => {
+    const normalized = normalizePosition(position);
+
+    const rank = positionOrder.findIndex(
+      (pos) => normalizePosition(pos) === normalized
+    );
+
+    // Unknown positions go to the bottom
+    return rank === -1 ? positionOrder.length : rank;
+  };
+
+  return [...members].sort(
+    (a, b) => getPositionRank(a.position) - getPositionRank(b.position)
+  );
+};
 
   const sortCCMembers = (members) => {
     const teamOrder = [
