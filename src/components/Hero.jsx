@@ -8,6 +8,7 @@ export default function Hero() {
     () => ["Innovation", "Technology", "Collaboration"],
     []
   );
+
   const [modalVisible, setModalVisible] = useState(false);
   const indexRef = useRef(0);
   const [currentWord, setCurrentWord] = useState(words[0]);
@@ -42,6 +43,7 @@ export default function Hero() {
                 <h3 className="text-2xl font-semibold text-center w-full">
                   Why IEEE MUJ?
                 </h3>
+
                 <button
                   onClick={() => setModalVisible(false)}
                   className="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white"
@@ -101,11 +103,13 @@ export default function Hero() {
                           <th>Fee</th>
                         </tr>
                       </thead>
+
                       <tbody>
                         <tr className="border-t">
                           <td className="py-2 pr-4 font-medium">1 Year</td>
                           <td className="py-2">₹400</td>
                         </tr>
+
                         <tr className="border-t">
                           <td className="py-2 pr-4 font-medium">2 Years</td>
                           <td className="py-2">₹600</td>
@@ -117,11 +121,13 @@ export default function Hero() {
 
                 <section>
                   <h4 className="font-medium">Join Now</h4>
+
                   <p className="mt-2">
                     Complete the registration using the official membership
                     form. Submissions are reviewed and followed up with payment
                     and onboarding instructions.
                   </p>
+
                   <a
                     className="inline-block mt-3 bg-ieee-blue text-white px-4 py-2 rounded-md hover:bg-blue-700"
                     href="https://forms.gle/asASeKRekYRAg7cr9"
@@ -145,34 +151,42 @@ export default function Hero() {
       indexRef.current = (indexRef.current + 1) % words.length;
       setCurrentWord(words[indexRef.current]);
     }, 3000);
+
     return () => clearInterval(interval);
   }, [words]);
 
+  /*
+   * Floating memory images
+   *
+   * IMPORTANT:
+   * These are intentionally kept around the outer edges of the hero.
+   * They should never sit over the main heading/content area.
+   */
   const memoryImages = [
     {
       src: "https://cdn.sanity.io/images/gcb0j4e6/production/235d12a437a470bb1e8262c8fb1d0e0aecd18b0f-6000x4000.jpg",
-      top: "10%",
-      left: "5%",
+      className:
+        "top-[7%] left-[1%] lg:left-[2%] xl:left-[4%] rotate-[-4deg]",
     },
     {
       src: "https://cdn.sanity.io/images/gcb0j4e6/production/4bcf01ecd1cc7e830b18df82f4e7068a777cd86b-1600x1200.jpg",
-      top: "15%",
-      right: "0%",
+      className:
+        "top-[7%] right-[1%] lg:right-[2%] xl:right-[4%] rotate-[4deg]",
     },
     {
       src: "https://cdn.sanity.io/images/gcb0j4e6/production/edd7bd9b7efa440bf0a6747300de4289d77ef32f-1600x1200.jpg",
-      top: "45%",
-      left: "5%",
+      className:
+        "top-[48%] left-[1%] lg:left-[2%] xl:left-[4%] rotate-[-3deg]",
     },
     {
       src: "https://cdn.sanity.io/images/gcb0j4e6/production/2c1b2f168ddd0ae226b1db29581377359f256374-6000x3376.jpg",
-      top: "75%",
-      left: "10%",
+      className:
+        "bottom-[5%] left-[6%] lg:left-[9%] xl:left-[12%] rotate-[3deg]",
     },
     {
       src: "https://cdn.sanity.io/images/gcb0j4e6/production/69f31f2fdb3b852cf4d25da52147c2ce18601f02-6000x3368.jpg",
-      top: "90%",
-      right: "10%",
+      className:
+        "bottom-[5%] right-[6%] lg:right-[9%] xl:right-[12%] rotate-[-3deg]",
     },
   ];
 
@@ -195,35 +209,64 @@ export default function Hero() {
 
   return (
     <ElectricBackground>
-      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-32 pb-20 relative">
-        {/* Floating Memory Images */}
-        {memoryImages.map(({ src, top, left, right }, i) => (
-          <motion.img
-            key={i}
-            src={src}
-            alt={`Memory ${i + 1}`}
-            className="absolute w-20 h-16 sm:w-40 sm:h-32 object-cover rounded-lg shadow-lg"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-              y: isMobile ? [0, -5, 0] : [0, -10, 0],
-            }}
-            transition={{
-              duration: isMobile ? 3 : 2,
-              delay: i * 0.5,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut",
-            }}
-            style={{ top, left, right }}
-          />
-        ))}
+      {/* Background grid */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
+
+      {/*
+       * Hero wrapper
+       *
+       * overflow-hidden keeps the decorative images inside the hero
+       * and prevents them from leaking into the navbar / next section.
+       */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-32 pb-20 relative overflow-hidden">
+        {/* =========================================================
+            FLOATING MEMORY IMAGES
+            ========================================================= */}
+
+        <div className="absolute inset-0 z-0 pointer-events-none hidden sm:block">
+          {memoryImages.map(({ src, className }, i) => (
+            <motion.img
+              key={i}
+              src={src}
+              alt={`Memory ${i + 1}`}
+              className={`
+                absolute
+                w-20 h-16
+                sm:w-32 sm:h-24
+                lg:w-40 lg:h-32
+                object-cover
+                rounded-lg
+                shadow-lg
+                select-none
+                ${className}
+              `}
+              initial={{
+                opacity: 0,
+                scale: 0.9,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                y: isMobile ? [0, -5, 0] : [0, -10, 0],
+              }}
+              transition={{
+                duration: isMobile ? 3 : 2,
+                delay: i * 0.5,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+        </div>
+
+        {/* =========================================================
+            MAIN HERO CONTENT
+            ========================================================= */}
 
         <div
           ref={ref}
-          className="relative z-10 flex flex-col text-center gap-12 w-full items-center"
+          className="relative z-20 flex flex-col text-center gap-12 w-full items-center"
         >
           <div className="space-y-8">
             <h2 className="text-ieee-blue dark:text-blue-400 text-sm sm:text-xl font-semibold font-display">
@@ -233,6 +276,7 @@ export default function Hero() {
             <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-gray-900 dark:text-white font-display relative">
               Empowering
               <br />
+
               <AnimatePresence mode="wait">
                 <motion.span
                   key={currentWord}
@@ -245,6 +289,7 @@ export default function Hero() {
                   {currentWord}
                 </motion.span>
               </AnimatePresence>
+
               <br />
               Together
             </h1>
@@ -253,6 +298,10 @@ export default function Hero() {
               Join the world&apos;s largest technical professional organization
               and be part of the future of technology.
             </p>
+
+            {/* =====================================================
+                CTA BUTTONS
+                ===================================================== */}
 
             <div className="flex flex-wrap gap-4 justify-center">
               <motion.a
@@ -282,7 +331,10 @@ export default function Hero() {
               </motion.a>
             </div>
 
-            {/* People Section */}
+            {/* =====================================================
+                PEOPLE SECTION
+                ===================================================== */}
+
             <div className="flex flex-col sm:flex-row items-center gap-4 text-gray-600 dark:text-gray-400">
               <div className="flex -space-x-2">
                 {[
@@ -303,6 +355,7 @@ export default function Hero() {
                   </div>
                 ))}
               </div>
+
               <p className="text-sm sm:text-md text-center sm:text-left">
                 Join 1500+ members in our community
               </p>
@@ -310,6 +363,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
       {membershipModal()}
     </ElectricBackground>
   );
