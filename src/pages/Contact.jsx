@@ -15,13 +15,14 @@ const Contact = () => {
           </h2>
           <div className="space-y-6">
             {[
-              { name: "Lakshita Agrawal", role: "Chairperson", phone: "+91 9312941940" },
-              { name: "Karan Kapoor", role: "Vice Chairperson", phone: "+91 7742372409" },
-              { name: "Sai Praketh Voona", role: "Managing Director", phone: "+91 7249777857" },
-              { name: "Krishnav Gupta", role: "General Secretary", phone: "+91 9811187903" },
-              { name: "Shivam Shandilya", role: "Treasurer", phone: "+91 8918899791" },
-              { name: "Ayana Takshak", role: "HR Director", phone: "+91 8949398854" },
-              { name: "Ayush Agrawal", role: "Community Director", phone: "+91 8839763577" },
+              { name: "Arunanshu Basu", role: "Chairperson", phone: "+91 7869486315" },
+              { name: "Pratyush Sharma", role: "Vice Chairperson", phone: "+91 9811499046" },
+              { name: "Yatharth Rajpoot", role: "General Secretary", phone: "+91 9319927106" },
+              { name: "Anushka Srivastav", role: "Managing Director", phone: "+91 7985212566" },
+              { name: "Aadrit Kaushik", role: "Treasurer", phone: "+91 9873013772" },
+              { name: "Navya Bhardwaj", role: "Human Resources Director", phone: "+91 9810263661" },
+              { name: "Shrinivas Kharpade", role: "Community and Media Director", phone: "+91 8999550884" },
+              { name: "Yogesh Jajoria", role: "Technical Projects Mentor", phone: "+91 9418307527" },
             ].map(({ name, role, phone }) => (
               <motion.div
                 key={name}
