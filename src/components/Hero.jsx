@@ -149,31 +149,33 @@ export default function Hero() {
   }, [words]);
 
   const memoryImages = [
-    {
-      src: "https://cdn.sanity.io/images/gcb0j4e6/production/235d12a437a470bb1e8262c8fb1d0e0aecd18b0f-6000x4000.jpg",
-      top: "10%",
-      left: "5%",
-    },
-    {
-      src: "https://cdn.sanity.io/images/gcb0j4e6/production/4bcf01ecd1cc7e830b18df82f4e7068a777cd86b-1600x1200.jpg",
-      top: "15%",
-      right: "0%",
-    },
-    {
-      src: "https://cdn.sanity.io/images/gcb0j4e6/production/edd7bd9b7efa440bf0a6747300de4289d77ef32f-1600x1200.jpg",
-      top: "45%",
-      left: "5%",
-    },
-    {
-      src: "https://cdn.sanity.io/images/gcb0j4e6/production/2c1b2f168ddd0ae226b1db29581377359f256374-6000x3376.jpg",
-      top: "75%",
-      left: "10%",
-    },
-    {
-      src: "https://cdn.sanity.io/images/gcb0j4e6/production/69f31f2fdb3b852cf4d25da52147c2ce18601f02-6000x3368.jpg",
-      top: "90%",
-      right: "10%",
-    },
+const memoryImages = [
+  {
+    src: "https://cdn.sanity.io/images/gcb0j4e6/production/235d12a437a470bb1e8262c8fb1d0e0aecd18b0f-6000x4000.jpg",
+    top: "8%",
+    left: "2%",
+  },
+  {
+    src: "https://cdn.sanity.io/images/gcb0j4e6/production/4bcf01ecd1cc7e830b18df82f4e7068a777cd86b-1600x1200.jpg",
+    top: "12%",
+    right: "2%",
+  },
+  {
+    src: "https://cdn.sanity.io/images/gcb0j4e6/production/edd7bd9b7efa440bf0a6747300de4289d77ef32f-1600x1200.jpg",
+    top: "43%",
+    left: "2%",
+  },
+  {
+    src: "https://cdn.sanity.io/images/gcb0j4e6/production/2c1b2f168ddd0ae226b1db29581377359f256374-6000x3376.jpg",
+    top: "70%",
+    left: "5%",
+  },
+  {
+    src: "https://cdn.sanity.io/images/gcb0j4e6/production/69f31f2fdb3b852cf4d25da52147c2ce18601f02-6000x3368.jpg",
+    top: "78%",
+    right: "5%",
+  },
+];
   ];
 
   const isMobile = window.innerWidth < 640;
