@@ -152,8 +152,8 @@ export default function Hero() {
 const memoryImages = [
   {
     src: "https://cdn.sanity.io/images/gcb0j4e6/production/235d12a437a470bb1e8262c8fb1d0e0aecd18b0f-6000x4000.jpg",
-    top: "8%",
-    left: "2%",
+    top: "10%",
+    left: "7%",
   },
   {
     src: "https://cdn.sanity.io/images/gcb0j4e6/production/4bcf01ecd1cc7e830b18df82f4e7068a777cd86b-1600x1200.jpg",
@@ -162,7 +162,7 @@ const memoryImages = [
   },
   {
     src: "https://cdn.sanity.io/images/gcb0j4e6/production/edd7bd9b7efa440bf0a6747300de4289d77ef32f-1600x1200.jpg",
-    top: "43%",
+    top: "45%",
     left: "2%",
   },
   {
