@@ -152,7 +152,7 @@ export default function Hero() {
 const memoryImages = [
   {
     src: "https://cdn.sanity.io/images/gcb0j4e6/production/235d12a437a470bb1e8262c8fb1d0e0aecd18b0f-6000x4000.jpg",
-    top: "10%",
+    top: "20%",
     left: "7%",
   },
   {
