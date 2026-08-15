@@ -5,7 +5,7 @@ const achievementsData = [
     label: "Outstanding Student Volunteer Award",
     description: "Devansh Kothari, Tanmay Shah, and Lakshita Aggarwal",
     image:
-      "https://cdn.sanity.io/images/gcb0j4e6/production/37a26b019a2d9ae845590b1c8b1a3d8b061d6403-848x1280.jpg",
+      "https://cdn.sanity.io/images/gcb0j4e6/production/adea057229194203b84106dd9dbf057625643ba8-843x602.jpg",
     content:
       "Devansh Kothari, Tanmay Shah, and Lakshita Aggarwal have been recognized for their outstanding contributions to IEEE, with Devansh Kothari and Tanmay Shah receiving the Outstanding Student Volunteer Award, while Lakshita Aggarwal was honored with the prestigious Dr. J.K. Pal Memorial Award. Their dedication, leadership, and commitment to IEEE have made a meaningful impact on the community and reflect their exceptional spirit of service and excellence.",
   },
@@ -14,7 +14,7 @@ const achievementsData = [
     label: "Outstanding Student Volunteer Award",
     description: "Devansh Kothari and Tanmay Shah",
     image:
-      "https://cdn.sanity.io/images/gcb0j4e6/production/769ada318b3a94e6b549f4bccfcd725dc9881a9d-1254x1280.jpg",
+      "https://cdn.sanity.io/images/gcb0j4e6/production/17acd18abe80b7d67b3cdefa891fca4faec767e0-1254x896.jpg",
     content:
       "Devansh Kothari and Tanmay Shah have been honored with the Outstanding Student Volunteer Award for their dedication, leadership, and valuable contributions to IEEE. Their active involvement, teamwork, and commitment to excellence have played an important role in strengthening the IEEE community and making a lasting impact throughout the session.",
   },
@@ -23,7 +23,7 @@ const achievementsData = [
     label: "Outstanding Student Volunteer Award",
     description: "Tanmay Shah",
     image:
-      "https://cdn.sanity.io/images/gcb0j4e6/production/f7a3f70bdc4f1ae638c9014ae5207b90946e8c59-960x1280.jpg",
+      "https://cdn.sanity.io/images/gcb0j4e6/production/cd0d074a89869758bee6a45c2f3cff8f1db9b41c-960x686.jpg",
     content:
       "Tanmay Shah has been honored with the Outstanding Student Volunteer Award for his remarkable dedication and active participation in IEEE MUJ. His efforts, leadership, and passion for service have contributed significantly to the community.",
   },
